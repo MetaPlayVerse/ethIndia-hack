@@ -46,3 +46,7 @@ typechain-types
 cache
 artifacts
 
+# Compiled output
+circuit_final.zkey
+circuit_final.json
+build
