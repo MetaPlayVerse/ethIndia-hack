@@ -148,17 +148,22 @@ export default function Navbar() {
 				</div>
 				<div >
 					{/* Render the proof if generated and valid */}
+
 					{anonAadhaar?.status === "logged-in" && (
 						<>
 							<p>✅ Proof is valid</p>
+							<button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>open modal</button>
 							<AnonAadhaarProof code={JSON.stringify(anonAadhaar.pcd, null, 2)} />
+
+							<dialog id="my_modal_1" className="modal">
+								<div className="modal-box">
+									<AnonAadhaarProof code={JSON.stringify(anonAadhaar.pcd, null, 2)} />
+								</div>
+							</dialog>
 						</>
 					)}
 				</div>
-
 			</div>
-
 		</div >
-
 	);
 }
