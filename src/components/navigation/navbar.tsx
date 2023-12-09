@@ -111,7 +111,7 @@ export default function Navbar() {
 					{/* <ConnectButton></ConnectButton> */}
 					<details className="dropdown">
 						{/* <button onClick={toggleDropdown} className="px-6 py-2 bg-[#98ee2c] text-black font-semibold ">Connect Wallet</button> */}
-						<summary className="btn px-6 py-2 bg-[#98ee2c] text-black font-semibold">open or close</summary>
+						<summary className="btn px-6 py-2 bg-[#98ee2c] text-black font-semibold">Connect</summary>
 						<ul className="p-2 menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
 							<li><a>
 								<ConnectButton></ConnectButton>

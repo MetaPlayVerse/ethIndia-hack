@@ -34,6 +34,9 @@ import { mainnet } from '@wagmi/core'
 
 import { publicProvider } from 'wagmi/providers/public';
 
+import { AnonAadhaarProvider } from 'anon-aadhaar-react'
+
+
 const { chains, provider } = configureChains(
     [
         goerli,
@@ -48,6 +51,7 @@ const { chains, provider } = configureChains(
     ],
     [alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY || "" }), publicProvider()]
 );
+
 
 const projectId = '9811958bd307518b364ff7178034c435';
 
@@ -86,16 +90,22 @@ const wagmiClient = createClient({
     provider,
 });
 
+const app_id = process.env.NEXT_PUBLIC_APP_ID || "";
+
 export { WagmiConfig, RainbowKitProvider };
 
 export function Providers({ children }: { children: React.ReactNode }) {
     const [mounted, setMounted] = React.useState(false);
     React.useEffect(() => setMounted(true), []);
+    console.log("app_id", app_id)
     return (
         <WagmiConfig client={wagmiClient}>
-            <RainbowKitProvider chains={chains} appInfo={demoAppInfo}>
-                {mounted && children}
-            </RainbowKitProvider>
+            <AnonAadhaarProvider _appId={app_id}>
+                <RainbowKitProvider chains={chains} appInfo={demoAppInfo}>
+                    {mounted && children}
+                </RainbowKitProvider>
+            </AnonAadhaarProvider>
+
         </WagmiConfig>
     );
 }
